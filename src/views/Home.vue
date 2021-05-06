@@ -1,7 +1,7 @@
 <template>
   <main>
     <section class="info_slider">
-      <Carousel>
+      <Carousel :itemCount="countPage(infoSlider, 1)">
         <div
           class="info_slider__item"
           v-for="slide of infoSlider"
@@ -16,6 +16,7 @@
         </div>
       </Carousel>
     </section>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
   </main>
 </template>
 
@@ -54,6 +55,9 @@ export default {
     getImgUrl(imgName) {
       return require("../assets/img/" + imgName);
     },
+    countPage(arr, itemsCount) {
+      return Math.ceil(arr.length / itemsCount);
+    },
   },
   components: {
     Carousel,
@@ -64,7 +68,7 @@ export default {
 <style lang="scss">
 .info_slider {
   &__item {
-    min-width: 100vw;
+    min-width: calc(100vw - 17px);
     height: 500px;
     background-repeat: no-repeat;
     background-size: 100% auto;
