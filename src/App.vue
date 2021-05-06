@@ -1,32 +1,56 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Header></Header>
     <router-view />
   </div>
 </template>
 
+<script>
+import Header from "./components/Header";
+export default {
+  components: {
+    Header,
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+@font-face {
+  font-family: "Merriweather";
+  src: local("Merriweather-Bold"),
+    url("~@/assets/fonts/Merriweather-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Merriweather";
+  src: local("Merriweather-Regular"),
+    url("~@/assets/fonts/Merriweather-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: Merriweather;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  list-style: none;
+  text-decoration: none;
+}
+body {
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.btn {
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #208f7f;
+  text-transform: uppercase;
 }
 </style>
