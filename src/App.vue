@@ -37,11 +37,35 @@ export default {
   color: inherit;
   list-style: none;
   text-decoration: none;
+  line-height: 1.5;
 }
 body {
-  color: #2c3e50;
+  color: #323232;
+  .section_title {
+    padding-bottom: 40px;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background: #208f7f;
+    }
+  }
 }
-
+p {
+  margin-bottom: 15px;
+}
+section {
+  padding: 50px 0;
+}
 .btn {
   width: 150px;
   height: 40px;
