@@ -7,10 +7,12 @@ import {
   faAngleLeft,
   faAngleRight,
   faCheck,
+  faClock,
+  faQuoteLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faAngleLeft, faAngleRight, faCheck);
+library.add(faAngleLeft, faAngleRight, faCheck, faClock, faQuoteLeft);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

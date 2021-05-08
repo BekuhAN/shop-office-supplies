@@ -6,14 +6,36 @@
       "author": "typicode"
     }
   ],
-  "comments": [
+  "categories": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "name": "Бумага",
+      "bgImage": "category-bg-1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Товары для офиса",
+      "bgImage": "category-bg-2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Письменные пренодлежности",
+      "bgImage": "category-bg-3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Штемпельные принадлежности",
+      "bgImage": "category-bg-4.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Товары для школы",
+      "bgImage": "category-bg-5.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Художественные товары",
+      "bgImage": "category-bg-6.jpg"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

@@ -76,7 +76,7 @@ export default {
     .icon {
       path {
         transition: 0.2s;
-        fill: #fff;
+        fill: #999;
       }
     }
     &:focus {
@@ -91,10 +91,10 @@ export default {
     }
   }
   &__prev {
-    left: 50px;
+    left: 150px;
   }
   &__next {
-    right: 50px;
+    right: 150px;
   }
 }
 </style>

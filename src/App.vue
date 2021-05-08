@@ -38,6 +38,7 @@ export default {
   list-style: none;
   text-decoration: none;
   line-height: 1.5;
+  transition: inherit;
 }
 body {
   color: #323232;
