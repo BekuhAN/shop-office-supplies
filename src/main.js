@@ -8,12 +8,39 @@ import {
   faAngleRight,
   faCheck,
   faClock,
+  faCreditCard,
+  faEnvelope,
+  faFileAlt,
+  faMapMarkerAlt,
+  faMoneyBill,
+  faPaperPlane,
+  faPhoneAlt,
   faQuoteLeft,
+  faShoppingCart,
+  faTimes,
+  faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import VueTheMask from "vue-the-mask";
+Vue.use(VueTheMask);
 
-library.add(faAngleLeft, faAngleRight, faCheck, faClock, faQuoteLeft);
-
+library.add(
+  faAngleLeft,
+  faAngleRight,
+  faCheck,
+  faClock,
+  faQuoteLeft,
+  faPhoneAlt,
+  faEnvelope,
+  faPaperPlane,
+  faMapMarkerAlt,
+  faShoppingCart,
+  faCreditCard,
+  faFileAlt,
+  faMoneyBill,
+  faTruck,
+  faTimes
+);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.config.productionTip = false;

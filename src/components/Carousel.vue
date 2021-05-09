@@ -1,7 +1,7 @@
 <template>
   <div class="carousel" :style="cssProps">
-    <div class="carousel__wrapper">
-      <div class="carousel__items">
+    <div class="carousel__wrapper" :class="{ container: container }">
+      <div class="carousel__items" :class="{ row: row }">
         <slot></slot>
       </div>
     </div>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  props: ["itemCount"],
+  props: ["itemCount", "container", "row"],
   data() {
     return {
       currentCountPage: 0,
@@ -61,6 +61,8 @@ export default {
     display: flex;
     margin-left: var(--margin-left);
     transition: 0.5s;
+    flex-wrap: nowrap;
+    align-items: center;
   }
   &__prev,
   &__next {
@@ -91,10 +93,10 @@ export default {
     }
   }
   &__prev {
-    left: 150px;
+    left: 90px;
   }
   &__next {
-    right: 150px;
+    right: 90px;
   }
 }
 </style>

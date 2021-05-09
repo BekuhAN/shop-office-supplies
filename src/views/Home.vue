@@ -160,28 +160,40 @@
     </section>
     <section class="comments">
       <div class="section_title">Отзывы</div>
-      <Carousel :itemCount="countPage(listComments, 1)">
+      <Carousel :container="true" :itemCount="countPage(listComments, 1)">
         <div
           class="comments__item"
           v-for="comment of listComments"
           :key="comment.id"
         >
-          <div class="container">
-            <div class="item row">
-              <div class="col-2">
-                <figure class="image">
-                  <img :src="getImgUrl(comment.image)" />
-                </figure>
-              </div>
-              <div class="col-1">
-                <font-awesome-icon class="icon" icon="quote-left" />
-              </div>
-              <div class="content col-9">
-                <div class="text">{{ comment.text }}</div>
-                <div class="author">{{ comment.author }}</div>
-              </div>
+          <div class="item row">
+            <div class="col-2">
+              <figure class="image">
+                <img :src="getImgUrl(comment.image)" />
+              </figure>
+            </div>
+            <div class="col-1">
+              <font-awesome-icon class="icon" icon="quote-left" />
+            </div>
+            <div class="content col-9">
+              <div class="text">{{ comment.text }}</div>
+              <div class="author">{{ comment.author }}</div>
             </div>
           </div>
+        </div>
+      </Carousel>
+    </section>
+    <section class="brands">
+      <div class="section_title">Брэнды</div>
+      <Carousel
+        :container="true"
+        :row="true"
+        :itemCount="countPage(listBrands, 6)"
+      >
+        <div class="brands__item" v-for="brand of listBrands" :key="brand.id">
+          <figure class="image">
+            <img :src="getImgUrl(brand.src)" />
+          </figure>
         </div>
       </Carousel>
     </section>
@@ -239,6 +251,56 @@ export default {
             "Сайт просто супер. Ребята молодцы, делают свою работу на высоком уровне. Товары всегда новые, цены вполне доступные. Часто проводятся скидки, акции, что особо радует :) ",
           author: "- Аркадий",
           image: "comment-1.jpg",
+        },
+      ],
+      listBrands: [
+        {
+          id: 1,
+          src: "brand-1.jpeg",
+        },
+        {
+          id: 2,
+          src: "brand-2.png",
+        },
+        {
+          id: 3,
+          src: "brand-3.jpeg",
+        },
+        {
+          id: 4,
+          src: "brand-4.jpeg",
+        },
+        {
+          id: 5,
+          src: "brand-5.jpeg",
+        },
+        {
+          id: 6,
+          src: "brand-6.jpeg",
+        },
+        {
+          id: 7,
+          src: "brand-7.jpeg",
+        },
+        {
+          id: 8,
+          src: "brand-8.jpeg",
+        },
+        {
+          id: 9,
+          src: "brand-9.jpeg",
+        },
+        {
+          id: 10,
+          src: "brand-10.jpeg",
+        },
+        {
+          id: 11,
+          src: "brand-11.png",
+        },
+        {
+          id: 12,
+          src: "brand-12.jpeg",
         },
       ],
     };
@@ -514,10 +576,11 @@ export default {
   }
 }
 .comments {
+  background: #f9f9f9;
   &__item {
-    flex: 0 0 1140px;
+    flex: 0 0 1110px;
     padding: 30px 0;
-    // min-width: 100%;
+    min-width: 1110px;
     .item {
       display: flex;
       .image {
@@ -535,7 +598,8 @@ export default {
         }
       }
       .icon {
-        font-size: 50px;
+        margin-top: 15px;
+        font-size: 42px;
         path {
           fill: #888;
         }
@@ -548,6 +612,27 @@ export default {
         .author {
           font-weight: bold;
         }
+      }
+    }
+  }
+}
+.brands {
+  &__item {
+    flex: 0 0 185px;
+    padding: 30px 15px;
+    filter: grayscale(1);
+    opacity: 0.7;
+    &:hover {
+      filter: grayscale(0);
+      opacity: 1;
+    }
+    .image {
+      display: flex;
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 100%;
       }
     }
   }
