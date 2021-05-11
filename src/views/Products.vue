@@ -6,7 +6,10 @@
           <div class="products_categories">
             <div class="products_categories__title">Категории</div>
             <ul class="products_categories__list">
-              <li class="products_categories__list__item">
+              <li
+                class="products_categories__list__item"
+                @click="selectedCategory([])"
+              >
                 <router-link
                   to="/products?_limit=8&_page=1&all=true"
                   :class="{ active: !$route.query.categoryId }"
@@ -17,15 +20,19 @@
                 class="products_categories__list__item"
                 v-for="cat of listCategories"
                 :key="cat.id"
+                @click="selectedCategory(cat.products)"
               >
                 <router-link
                   :to="{
                     path: '/products',
                     query: {
                       categoryId: cat.id,
+                      _page: 1,
                     },
                   }"
-                  :class="{ active: cat.id === $route.query.categoryId }"
+                  :class="{
+                    'router-link-exact-active': cat.id == selectedIdCategory,
+                  }"
                 >
                   {{ cat.name }}
                 </router-link>
@@ -55,14 +62,26 @@
               :item="product"
             ></ProductItem>
           </div>
-          <!-- <div class="col-12 pagination">
-            <div class="pagination__prev">Предыдущая</div>
+          <div class="col-12 pagination">
             <div class="pagination__list_page">
-              <router-link to="" class="pagination__list_page__item">
+              <router-link
+                :to="{
+                  path: '/products',
+                  query: {
+                    _page: index,
+                  },
+                }"
+                class="pagination__list_page__item"
+                v-for="index of selectCategory"
+                :key="index"
+                :class="{
+                  'router-link-exact-active': index == $route.query._page,
+                }"
+              >
+                {{ index }}
               </router-link>
             </div>
-            <div class="pagination__next">Следующая</div>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -72,6 +91,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import ProductItem from "../components/ProductItem";
+import axios from "axios";
 export default {
   data() {
     return {
@@ -80,8 +100,9 @@ export default {
         _page: 1,
       },
       sortSelected: "",
-      activeCategory: null,
-      currentPage: 1,
+      activeCategory: [],
+      selectedIdCategory: null,
+      list: [],
     };
   },
   components: {
@@ -89,6 +110,13 @@ export default {
   },
   computed: {
     ...mapGetters(["listProducts", "listCategories"]),
+    selectCategory() {
+      if (!this.activeCategory.length) {
+        return Math.ceil(this.list.length / 8);
+      } else {
+        return Math.ceil(this.activeCategory.length / 8);
+      }
+    },
   },
   methods: {
     ...mapActions(["getListProducts", "getListCategories"]),
@@ -99,7 +127,6 @@ export default {
       } else {
         this.params = Object.assign({}, this.params, { ...this.$route.query });
       }
-      console.log(this.$route);
       this.getListProducts(this.params);
       this.getListCategories();
     },
@@ -113,8 +140,15 @@ export default {
       }
       this.getListProducts(this.params);
     },
+    selectedCategory(cat) {
+      this.activeCategory = cat;
+      this.selectedIdCategory = cat.categoryId;
+    },
   },
   beforeMount() {
+    axios
+      .get("http://localhost:3000/products")
+      .then((resp) => (this.list = resp.data));
     const { all } = this.$route.query;
     if (all) {
       this.params = Object.assign({}, { ...this.$route.query });
@@ -123,6 +157,8 @@ export default {
     }
     this.getListProducts(this.params);
     this.getListCategories();
+    this.selectedIdCategory = this.$route.query.categoryId;
+    console.log(this.selectedIdCategory);
   },
   watch: {
     $route: "fetchData",
@@ -150,7 +186,8 @@ export default {
           padding: 10px 30px;
           border-radius: 10px;
         }
-        & .router-link-exact-active {
+        & .router-link-exact-active,
+        .active {
           position: relative;
           color: #208f7f;
           &::before {
@@ -187,6 +224,29 @@ export default {
       margin-left: 15px;
       &:focus {
         outline: none;
+      }
+    }
+  }
+  .pagination {
+    background: #208f7f;
+    height: 47px;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .pagination__list_page {
+      &__item {
+        background: #fff;
+        display: inline-block;
+        margin: 2px;
+        padding: 5px 10px;
+        border-radius: 10px;
+        border: 1px solid #fff;
+        &:hover,
+        &.router-link-exact-active {
+          background: #208f7f;
+          color: #fff;
+        }
       }
     }
   }
