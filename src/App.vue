@@ -124,6 +124,7 @@ export default {
 body {
   position: relative;
   color: #323232;
+  min-width: 1300px;
   .section_title {
     padding-bottom: 40px;
     font-size: 32px;

@@ -26,7 +26,7 @@ export default {
         {
           id: 3,
           name: "Продукция",
-          link: "/products",
+          link: "/products?_limit=8&_page=1",
         },
         {
           id: 4,

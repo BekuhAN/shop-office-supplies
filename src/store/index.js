@@ -31,9 +31,9 @@ export default new Vuex.Store({
         .get("http://localhost:3000/categories?_embed=products")
         .then(({ data }) => commit("updateListCategories", data));
     },
-    getListProducts({ commit }) {
+    getListProducts({ commit }, params) {
       axios
-        .get("http://localhost:3000/products")
+        .get("http://localhost:3000/products", { params })
         .then(({ data }) => commit("updateListProducts", data));
     },
   },

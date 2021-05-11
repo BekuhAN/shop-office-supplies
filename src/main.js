@@ -16,6 +16,7 @@ import {
   faPaperPlane,
   faPhoneAlt,
   faQuoteLeft,
+  faRubleSign,
   faShoppingCart,
   faTimes,
   faTruck,
@@ -39,7 +40,8 @@ library.add(
   faFileAlt,
   faMoneyBill,
   faTruck,
-  faTimes
+  faTimes,
+  faRubleSign
 );
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

@@ -79,7 +79,7 @@
       <div class="container">
         <div class="row">
           <router-link
-            to="/"
+            :to="{ path: '/products', query: { categoryId: cat.id } }"
             class="col-4 catalog__item"
             v-for="cat of listCategories"
             :key="cat.id"
